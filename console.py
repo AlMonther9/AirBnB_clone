@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Console Module"""
+"""Console module for managing the HBNB project."""
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -13,7 +13,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """Contains the functionality for the HBNB console"""
+    """Contains the functionality of the HBNB console."""
 
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
     classes = {
@@ -29,12 +29,12 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def preloop(self):
-        """Prints if isatty is false"""
+        """Prints if isatty is false."""
         if not sys.__stdin__.isatty():
             print('(hbnb)')
 
     def precmd(self, line):
-        """Reformat command line for advanced command syntax."""
+        """Reformats the command line for advanced command syntax."""
         if '.' in line and '(' in line and ')' in line:
             try:
                 cls, _, args = line.partition('.')
@@ -54,34 +54,34 @@ class HBNBCommand(cmd.Cmd):
         return line
 
     def postcmd(self, stop, line):
-        """Prints if isatty is false"""
+        """Prints if isatty is false."""
         if not sys.__stdin__.isatty():
             print('(hbnb) ', end='')
         return stop
 
     def do_quit(self, line):
-        """Exit the HBNB console"""
+        """Terminate the HBNB console."""
         exit()
 
     def help_quit(self):
-        """Prints the help documentation for quit"""
+        """Displays the help documentation for quitting the console."""
         print("Exits the program with formatting\n")
 
     def do_EOF(self, line):
-        """Handles EOF to exit program"""
+        """Processes EOF to exit the program."""
         print()
         exit()
 
     def help_EOF(self):
-        """Prints the help documentation for EOF"""
+        """Displays the help documentation for handling EOF."""
         print("Exits the program without formatting\n")
 
     def emptyline(self):
-        """Overrides the emptyline method of CMD"""
+        """Overrides the emptyline method of the CMD class."""
         pass
 
     def do_create(self, args):
-        """Create an object of any class"""
+        """Creates an instance of any class."""
         if not args:
             print("** class name missing **")
             return
@@ -94,12 +94,12 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def help_create(self):
-        """Help information for the create method"""
+        """Provides help information for the create method."""
         print("Creates a class of any type")
         print("[Usage]: create <className>\n")
 
     def do_show(self, args):
-        """Show an individual object"""
+        """Display an individual object."""
         cls, _, obj_id = args.partition(" ")
 
         if not cls:
@@ -121,12 +121,12 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def help_show(self):
-        """Help information for the show command"""
+        """Provides help information for the show command."""
         print("Shows an individual instance of a class")
         print("[Usage]: show <className> <objectId>\n")
 
     def do_destroy(self, args):
-        """Destroy a specified object"""
+        """Remove a specified object."""
         cls, _, obj_id = args.partition(" ")
 
         if not cls:

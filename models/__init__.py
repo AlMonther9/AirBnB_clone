@@ -1,10 +1,7 @@
 #!/usr/bin/python3
+"""This module creates an instance of the FileStorage class."""
+from models.engine.file_storage import FileStorage
 
-# __init__.py
 
-# This is a package-level variable
-PACKAGE_VAR = "Hello from the package!"
-
-# Importing modules to make them accessible within the package
-from .module1 import *
-from .module2 import *
+storage = FileStorage()
+storage.reload()  # Load data from the JSON file into the storage
