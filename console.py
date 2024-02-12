@@ -150,14 +150,14 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def help_destroy(self):
-        """Help information for the destroy command"""
+        """Assistance details for the remove command"""
         print("Destroys an individual instance of a class")
         print("[Usage]: destroy <className> <objectId>\n")
 
     def do_all(self, args):
-        """Show all objects, or all objects of a class"""
+        """Display all objects of a class"""
         if args:
-            cls = args.split(' ')[0]  # remove possible trailing args
+            cls = args.split(' ')[0]  # exclude any potential additional arguments
             if cls not in self.classes:
                 print("** class doesn't exist **")
                 return
@@ -169,23 +169,23 @@ class HBNBCommand(cmd.Cmd):
         print(print_list)
 
     def help_all(self):
-        """Help information for the all command"""
+        """Assistance details for the entire command"""
         print("Shows all objects, or all of a class")
         print("[Usage]: all <className>\n")
 
     def do_count(self, args):
-        """Count current number of class instances"""
+        """Determine the present count of class instances"""
         count = sum(1 for k in storage._FileStorage__objects.keys()
                     if k.split('.')[0] == args)
         print(count)
 
     def help_count(self):
-        """Help information for the count command"""
+        """Assistance details for the tally command"""
         print("Counts the current number of class instances")
         print("[Usage]: count <className>\n")
 
     def do_update(self, args):
-        """Updates a certain object with new info"""
+        """Revises a specific object with updated information"""
         cls, _, obj_id, *args = args.split()
 
         if not cls:
@@ -225,7 +225,7 @@ class HBNBCommand(cmd.Cmd):
         obj.save()
 
     def help_update(self):
-        """Help information for the update command"""
+        """Assistance details for the refresh command"""
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
