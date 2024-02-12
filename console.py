@@ -144,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
         key = cls + "." + obj_id
 
         try:
-            del(storage.all()[key])
+            del (storage.all()[key])
             storage.save()
         except KeyError:
             print("** no instance found **")
@@ -157,14 +157,17 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """Display all objects of a class"""
         if args:
-            cls = args.split(' ')[0]  # exclude any potential additional arguments
+            cls = args.split(' ')[0]
+            # exclude any potential additional arguments
             if cls not in self.classes:
                 print("** class doesn't exist **")
                 return
-            print_list = [str(v) for k, v in storage._FileStorage__objects.items()
+            x = storage._FileStorage__objects.items()
+            print_list = [str(v) for k, v in x
                           if k.split('.')[0] == cls]
         else:
-            print_list = [str(v) for v in storage._FileStorage__objects.values()]
+            y = [str(v) for v in storage._FileStorage__objects.values()]
+            print_list = y
 
         print(print_list)
 
@@ -228,6 +231,7 @@ class HBNBCommand(cmd.Cmd):
         """Assistance details for the refresh command"""
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module defines a base class for all models in our HBNB clone project."""
+"""This module defines a base class for all models in our HBNB clone project"""
 import uuid
 from datetime import datetime
 
@@ -29,7 +29,11 @@ class BaseModel:
         return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
 
     def save(self):
-        """Updates the 'updated_at' attribute with the current time when the instance is changed"""
+        """
+        Updates the 'updated_at'
+          attribute with the current time when the instance is changed
+
+        """
         from models import storage
         self.updated_at = datetime.now()
         storage.save()
